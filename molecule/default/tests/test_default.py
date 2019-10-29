@@ -55,7 +55,7 @@ def test_repositories_present(host, repo_file, os_major_version):
 )
 def test_repositories_enabled(host, repo_file):
     content = host.file("/etc/yum.repos.d/"+repo_file).content.decode('utf8')
-    enabled_regex = re.compile("enabled\s*=\s*1")
+    enabled_regex = re.compile(r'enabled\s*=\s*1')
     assert enabled_regex.search(content) is not None
 
 
