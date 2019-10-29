@@ -2,6 +2,10 @@ import os
 import pytest
 import testinfra.utils.ansible_runner
 import re
+from six.moves.urllib.request import urlopen
+from xml.dom import minidom
+
+
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
 
@@ -63,9 +67,15 @@ def test_crl_files(host):
 
 # def test_crl_freshness(host):
 
+
 def test_egi_policy(host):
     ca_package_name = "ca-policy-egi-core"
-    ca_package_version = "1.95"
+    ca_package_version_url = ("http://repository.egi.eu/sw/production"
+                              "/cas/1/current/release.xml")
+    _doc = minidom.parse(urlopen(ca_package_version_url))
+    _version = _doc.getElementsByTagName('Version')[0].firstChild.data
+    ca_package_version = _version.split('-')[0]
+
     pkg = host.package(ca_package_name)
     assert pkg.is_installed
     assert pkg.version.startswith(ca_package_version)
