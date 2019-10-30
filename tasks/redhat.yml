@@ -9,9 +9,10 @@
     name: "{{ release_url[release] }}"
     state: present
 
-- name: Ensure UMD base candidate repository is enabled
+- name: Ensure UMD candidate repositories are enabled
   block:
-    - yum_repository:
+    - name: Enable UMD candidate base
+      yum_repository:
         name: "UMD-{{ release }}-candidate-base"
         description: "UMD-{{ release }} candidate - base"
         file: "UMD-{{ release }}-candidate"
@@ -20,7 +21,8 @@
         enabled: yes
         priority: 1
         gpgcheck: no
-    - yum_repository:
+    - name: Enable UMD candidate updates
+      yum_repository:
         name: "UMD-{{ release }}-candidate-updates"
         description: "UMD-{{ release }} candidate - updates"
         file: "UMD-{{ release }}-candidate"
@@ -34,7 +36,7 @@
 - name: Ensure yum-utils is present
   package:
     name: yum-utils
-    state: latest
+    state: present
   when: enable_testing_repo or enable_untested_repo
 
 # these tasks are not idempotent - they should be replaced with some "replace" tasks, in a block
