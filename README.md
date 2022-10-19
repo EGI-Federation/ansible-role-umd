@@ -4,7 +4,7 @@
 
 The role deploys the repository files needed to access the products distributed
 by [UMD](https://go.egi.eu/umd), currently supported for Scientific Linux 6 and
-CEntOS7. This role optionally deploys the Interoperable Global Trust Federation
+CentOS7. This role optionally deploys the Interoperable Global Trust Federation
 (IGTF) repository file.
 
 Information on available UMD release is available on the
