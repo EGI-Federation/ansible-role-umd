@@ -3,8 +3,10 @@
 [![Build Status](https://travis-ci.org/EGI-Foundation/ansible-role-umd.svg?branch=master)](https://travis-ci.org/EGI-Foundation/ansible-role-umd) [![Docker Repository on Quay](https://quay.io/repository/egi/umd4/status "Docker Repository on Quay")](https://quay.io/repository/egi/umd4)
 
 The role deploys the repository files needed to access the products
-distributed by UMD, currently supported for Scientific Linux 6 and CEntOS7.
+distributed by [UMD](https://go.egi.eu/umd), currently supported for Scientific Linux 6 and CEntOS7.
 This role optionally deploys the Interoperable Global Trust Federation (IGTF) repository file.
+
+Information on available UMD release is available on the [EGI repository](https://repository.egi.eu/).
 
 ## Using
 
