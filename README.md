@@ -1,6 +1,6 @@
 # Unified Middleware Distribution (UMD) 
 
-[![Build Status](https://travis-ci.org/EGI-Foundation/ansible-role-umd.svg?branch=master)](https://travis-ci.org/EGI-Foundation/ansible-role-umd) [![Docker Repository on Quay](https://quay.io/repository/egi/umd4/status "Docker Repository on Quay")](https://quay.io/repository/egi/umd4)
+[![Docker Repository on Quay](https://quay.io/repository/egi/umd4/status "Docker Repository on Quay")](https://quay.io/repository/egi/umd4)
 
 The role deploys the repository files needed to access the products
 distributed by [UMD](https://go.egi.eu/umd), currently supported for Scientific Linux 6 and CEntOS7.
