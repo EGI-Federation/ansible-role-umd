@@ -53,7 +53,7 @@ This role can be used in several scenarios, depending on your environment. These
 ```yaml
     - hosts: all
       roles:
-         - { role: ansible-umd }
+         - { role: ansible-umd, release: 4 }
 ```
 
 ### Install UMD repository files, enabling the candidate repository
@@ -61,7 +61,7 @@ This role can be used in several scenarios, depending on your environment. These
 ```yaml
     - hosts: all
       roles:
-         - { role: ansible-umd, enable_candidate_repo: true }
+         - { role: ansible-umd, release: 4, enable_candidate_repo: true }
 ```
 
 ### Install UMD repository files together with the IGTF repository of trusted CAs.
@@ -69,7 +69,7 @@ This role can be used in several scenarios, depending on your environment. These
 ```yaml
     - hosts: all
       roles:
-         - { role: ansible-umd, ca_verification: true }
+         - { role: ansible-umd, release: 4, ca_verification: true }
 ```
 
 ## License
