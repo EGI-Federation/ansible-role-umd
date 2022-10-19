@@ -70,20 +70,20 @@ are some examples of how to use this role.
     - { role: ansible-umd, release: 4 }
 ```
 
+### Install UMD repository files together with the trusted CAs and fetch-crl
+
+```yaml
+- hosts: all
+  roles:
+    - { role: ansible-umd, release: 4, ca_verification: true, crl_deploy: true }
+```
+
 ### Install UMD repository files, enabling the candidate repository
 
 ```yaml
 - hosts: all
   roles:
     - { role: ansible-umd, release: 4, enable_candidate_repo: true }
-```
-
-### Install UMD repository files together with the IGTF repository of trusted CAs.
-
-```yaml
-- hosts: all
-  roles:
-    - { role: ansible-umd, release: 4, ca_verification: true }
 ```
 
 ## License
