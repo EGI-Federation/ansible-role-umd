@@ -1,7 +1,7 @@
 ---
 - name: Set necessary facts
   set_fact:
-    ca_branch: "unverified"
+    ca_branch: "production"
     ca_server: repository.egi.eu
   when: ca_verification
 
