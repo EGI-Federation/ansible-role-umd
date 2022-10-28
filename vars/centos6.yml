@@ -6,10 +6,3 @@ sources_dir: /etc/yum.repos.d/
 nick: centos6
 baseline_packages:
   - ntpdate
-security_updates:
-  # RHSA-2013:0568
-  - name: dbus-glib
-    patched_version: 0.86-6.el6
-  # RHSA-2017:3071
-  - name: ntpdate
-    patched_version: 4.2.6p5-12.el6.centos.2

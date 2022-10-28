@@ -5,4 +5,3 @@ sources_dir: /etc/apt/sources.list.d
 nick: squeeze
 baseline:
   - ntpdate
-security_updates: []

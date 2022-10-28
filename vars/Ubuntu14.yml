@@ -4,4 +4,3 @@ release_url:
   4: http://repository.egi.eu/sw/production/umd/4/repofiles/ubuntu-trusty/
 sources_dir: /etc/apt/sources.list.d
 nick: trusty
-security_updates: []

@@ -3,4 +3,3 @@ release_url:
   3: http://repository.egi.eu/sw/production/umd/3/
 sources_dir: /etc/apt/sources.list.d
 nick: xenial
-security_updates: []

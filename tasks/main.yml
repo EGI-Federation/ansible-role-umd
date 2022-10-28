@@ -1,10 +1,14 @@
 ---
 - name: OS specific variables
-  include_vars: "{{ ansible_distribution | lower }}{{ ansible_distribution_major_version }}.yml"
+  include_vars:
+    "{{ ansible_distribution | lower }}{{ ansible_distribution_major_version
+    }}.yml"
 
 - name: Fail if release is not defined
   fail:
-    msg: "Incompatible release/OS combination. Please check 'release' variable and supported OS"
+    msg:
+      "Incompatible release/OS combination. Please check 'release' variable and
+      supported OS"
   when: (release is not defined) or (release_url[release] is not defined)
 
 - name: Include OS-specific tasks
@@ -25,5 +29,4 @@
 - import_tasks: baseline.yml
 - import_tasks: updates.yml
   tags:
-    - security
     - updates

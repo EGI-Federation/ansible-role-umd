@@ -1,7 +1,0 @@
----
-# Security updates from scanning
-- name: Ensure that CVEs are patched
-  package:
-    state: present
-    name: "{{ item.name }}-{{ item.patched_version }}"
-  loop: "{{ security_updates }}"

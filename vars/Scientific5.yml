@@ -3,4 +3,3 @@ release_url:
   3: http://repository.egi.eu/sw/production/umd/3/sl5/x86_64/updates/umd-release-3.0.1-1.el5.noarch.rpm
 sources_dir: /etc/yum.repos.d/
 nick: sl5
-security_updates: []
