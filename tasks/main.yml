@@ -27,6 +27,3 @@
     - certificates
 
 - import_tasks: baseline.yml
-- import_tasks: updates.yml
-  tags:
-    - updates
