@@ -1,6 +1,0 @@
----
-release_url:
-  3: http://repository.egi.eu/sw/production/umd/4/debian/dists/squeeze/main/binary-amd64/umd-release-3.0.0_all.deb
-  4: http://repository.egi.eu/sw/production/umd/4/repofiles/ubuntu-trusty/
-sources_dir: /etc/apt/sources.list.d
-nick: trusty
