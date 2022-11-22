@@ -1,7 +1,6 @@
+ansible
 molecule[docker]
 docker
 pytest-xdist
 ruamel.yaml
-testinfra
-pytest
-six
+pytest-testinfra
