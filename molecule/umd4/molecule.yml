@@ -8,8 +8,6 @@ lint:
 platforms:
   - name: umd-centos7
     image: centos:7
-  - name: umd-centos6
-    image: centos:6
 provisioner:
   name: ansible
   lint:
