@@ -3,4 +3,4 @@
   hosts: all
   strategy: free
   roles:
-    - {role: ansible-role-umd, release: 4, crl_deploy: true }
+    - { role: egi_federation.umd, release: 4, crl_deploy: true }
