@@ -1,18 +1,16 @@
 ---
 galaxy_info:
+  role_name: umd
+  namespace: egi_federation
   author: "Pablo Orviz"
-  company: "EGI"
+  company: "EGI Federation"
   description: UMD distribution repository deployment
   license: Apache
   min_ansible_version: 2.4
   platforms:
     - name: EL
       versions:
-        - 6
         - 7
-    - name: Debian
-      versions:
-        - squeeze
   galaxy_tags:
     - packaging
     - middleware
