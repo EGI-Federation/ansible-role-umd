@@ -16,6 +16,7 @@ If you wish to use this role, install the role from
 [Ansible Galaxy](https://galaxy.ansible.com/EGI-Foundation/umd):
 
 ```shell
+# Install ansible module from Ansible Galaxy
 $ ansible-galaxy install egi-foundation.umd
 ```
 
@@ -86,6 +87,28 @@ are some examples of how to use this role.
     - { role: ansible-umd, release: 4, enable_candidate_repo: true }
 ```
 
+## Running molecule locally
+
+Prepare a virtual env for testing.
+
+```shell
+# Create a folder for virtual environments
+$ mkdir -p ~/.virtualenvs
+# Create a python3 virtualenv
+$ python3 -m venv ~/.virtualenvs/molecule
+# Activate virtual env
+$ source ~/.virtualenvs/ui-deployment/bin/activate
+# Install dependencies
+$ pip install -r requirements.txt
+```
+
+Run molecule
+
+````shell
+# Lint
+$ ANSIBLE_FORCE_COLOR=1 molecule lint
+```
+
 ## Preparing a release
 
 - Prepare a changelog from the last version, including contributors' names
@@ -104,3 +127,5 @@ Apache 2.0
 Original author Pablo Orviz <orviz@ifca.unican.es>
 
 For contributions see [AUTHORS.md](AUTHORS.md).
+````
+
