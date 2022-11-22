@@ -30,5 +30,7 @@ jobs:
           # XXX gitleaks is currently not using exception file: #511
           # Always check all the content
           VALIDATE_ALL_CODEBASE: true
+          # hadolint tries to validate jinja templates
+          VALIDATE_DOCKERFILE_HADOLINT: false
           # Fail on errors
           DISABLE_ERRORS: false
