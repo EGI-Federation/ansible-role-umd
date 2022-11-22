@@ -86,6 +86,15 @@ are some examples of how to use this role.
     - { role: ansible-umd, release: 4, enable_candidate_repo: true }
 ```
 
+## Preparing a release
+
+- Prepare a changelog from the last version, including contributors' names
+- Prepare a PR with
+  - Updating version and changelog in `CHANGELOG`
+- Once the PR has been merged, publish a new release using GitHub web interface
+  - Suffix the tag name to be created with `v`, like `v1.0.0`
+  - Packages will be built using GitHub Actions and attached to the release page
+
 ## License
 
 Apache 2.0

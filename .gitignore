@@ -7,3 +7,5 @@ __pycache__
 .ansible-test
 .vs/
 .vscode/
+.venv
+.python-version
