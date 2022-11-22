@@ -2,3 +2,4 @@ molecule[docker]
 docker
 pytest-xdist
 ruamel.yaml
+testinfra
