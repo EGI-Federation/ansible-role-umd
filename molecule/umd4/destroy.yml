@@ -19,7 +19,7 @@
       poll: 0
 
     - name: Wait for instance(s) deletion to complete
-      async_status:
+      ansible.builtin.async_status.async_status:
         jid: "{{ item.ansible_job_id }}"
       register: docker_jobs
       until: docker_jobs.finished

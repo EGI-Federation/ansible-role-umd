@@ -1,49 +1,50 @@
 ---
 - name: Ensure EPEL is present
-  package:
+  ansible.builtin.package:
     name: epel-release
     state: present
 
 - name: Ensure release package is present (RedHat)
-  package:
+  ansible.builtin.package:
     name: "{{ release_url[release] }}"
     state: present
 
 - name: Ensure UMD candidate repositories are enabled
   block:
     - name: Enable UMD candidate base
-      yum_repository:
+      ansible.builtin.yum_repository:
         name: "UMD-{{ release }}-candidate-base"
         description: "UMD-{{ release }} candidate - base"
         file: "UMD-{{ release }}-candidate"
         baseurl: "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/base"
-        protect: yes
-        enabled: yes
+        protect: true
+        enabled: true
         priority: 1
-        gpgcheck: no
+        gpgcheck: false
     - name: Enable UMD candidate updates
-      yum_repository:
+      ansible.builtin.yum_repository:
         name: "UMD-{{ release }}-candidate-updates"
         description: "UMD-{{ release }} candidate - updates"
         file: "UMD-{{ release }}-candidate"
         baseurl: "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/updates"
-        protect: yes
-        enabled: yes
+        protect: true
+        enabled: true
         priority: 1
-        gpgcheck: no
+        gpgcheck: false
   when: enable_candidate_repo
 
 - name: Ensure yum-utils is present
-  package:
+  ansible.builtin.package:
     name: yum-utils
     state: present
   when: enable_testing_repo or enable_untested_repo
 
 # these tasks are not idempotent - they should be replaced with some "replace" tasks, in a block
 - name: Enable UMD testing repository
-  command: yum-config-manager --enable UMD-*-testing
+  ansible.builtin.command: yum-config-manager --enable UMD-*-testing
   when: enable_testing_repo
 
 - name: Enable UMD untested repository
-  command: yum-config-manager --enable UMD-*-untested
+  ansible.builtin.command: yum-config-manager --enable UMD-*-untested
   when: enable_untested_repo
+# vim: set ft=yaml.ansible:
