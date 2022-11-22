@@ -4,11 +4,9 @@ import urllib.request
 from xml.dom import minidom
 
 import pytest
-import testinfra.utils.ansible_runner
+from testinfra.utils.ansible_runner import AnsibleRunner
 
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ["MOLECULE_INVENTORY_FILE"]
-).get_hosts("all")
+testinfra_hosts = AnsibleRunner(os.environ["MOLECULE_INVENTORY_FILE"]).get_hosts("all")
 
 
 def test_hosts_file(host):
