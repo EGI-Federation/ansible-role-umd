@@ -4,3 +4,4 @@ pytest-xdist
 ruamel.yaml
 testinfra
 pytest
+six
