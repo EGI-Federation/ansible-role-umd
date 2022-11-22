@@ -30,8 +30,7 @@ def test_umd_version(host):
     ("epel.repo", "7"),
     ("UMD-4-base.repo", "7"),
     ("UMD-4-updates.repo", "7")
-]
-)
+])
 # Test that repositories are properly configured
 def test_repositories_present(host, repo_file, os_major_version):
     f = host.file("/etc/yum.repos.d/"+repo_file)
@@ -47,8 +46,7 @@ def test_repositories_present(host, repo_file, os_major_version):
     ("UMD-4-base.repo"),
     ("UMD-4-updates.repo"),
     ("UMD-4-updates.repo")
-]
-)
+])
 def test_repositories_enabled(host, repo_file):
     content = host.file("/etc/yum.repos.d/"+repo_file).content.decode('utf8')
     enabled_regex = re.compile(r'enabled\s*=\s*1')
