@@ -1,6 +1,7 @@
 import os
-import testinfra.utils.ansible_runner
 from distutils.version import LooseVersion  # , StrictVersion
+
+import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
