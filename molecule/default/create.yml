@@ -18,7 +18,7 @@
       register: platforms
 
     - name: Discover local Docker images
-      docker_image_facts:
+      community.docker.docker_image_info:
         name: "molecule_local/{{ item.item.name }}"
       with_items: "{{ platforms.results }}"
       register: docker_images
@@ -46,7 +46,7 @@
         state: started
         recreate: false
         log_driver: json-file
-        command: "{{ item.command | default('bash -c \"while true; do sleep 10000; done\"') }}"
+        command: '{{ item.command | default(''bash -c "while true; do sleep 10000; done"'') }}'
         privileged: "{{ item.privileged | default(omit) }}"
         volumes: "{{ item.volumes | default(omit) }}"
         capabilities: "{{ item.capabilities | default(omit) }}"
@@ -67,3 +67,4 @@
       until: docker_jobs.finished
       retries: 300
       with_items: "{{ server.results }}"
+# vim: set ft=yaml.ansible:
