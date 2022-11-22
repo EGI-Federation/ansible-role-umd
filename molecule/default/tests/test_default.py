@@ -1,10 +1,10 @@
 import os
-import pytest
-import testinfra.utils.ansible_runner
 import re
-from six.moves.urllib.request import urlopen
 from xml.dom import minidom
 
+import pytest
+import testinfra.utils.ansible_runner
+from six.moves.urllib.request import urlopen
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
     os.environ['MOLECULE_INVENTORY_FILE']).get_hosts('all')
@@ -30,7 +30,7 @@ def test_umd_version(host):
     ("epel.repo", "7"),
     ("UMD-4-base.repo", "7"),
     ("UMD-4-updates.repo", "7")
-    ]
+]
 )
 # Test that repositories are properly configured
 def test_repositories_present(host, repo_file, os_major_version):
@@ -47,7 +47,7 @@ def test_repositories_present(host, repo_file, os_major_version):
     ("UMD-4-base.repo"),
     ("UMD-4-updates.repo"),
     ("UMD-4-updates.repo")
-    ]
+]
 )
 def test_repositories_enabled(host, repo_file):
     content = host.file("/etc/yum.repos.d/"+repo_file).content.decode('utf8')
