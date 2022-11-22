@@ -26,13 +26,9 @@ def test_umd_version(host):
 
 
 @pytest.mark.parametrize("repo_file,os_major_version", [
-    ("EGI-trustanchors.repo", "6"),
     ("EGI-trustanchors.repo", "7"),
-    ("epel.repo", "6"),
     ("epel.repo", "7"),
-    ("UMD-4-base.repo", "6"),
     ("UMD-4-base.repo", "7"),
-    ("UMD-4-updates.repo", "6"),
     ("UMD-4-updates.repo", "7")
     ]
 )
