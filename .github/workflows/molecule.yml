@@ -18,12 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
           path: "${{ github.repository }}"
-      - name: molecule
+      - name: Molecule
         uses: gofrolist/molecule-action@v2
         with:
+          molecule_options: --debug
           molecule_command: test
           molecule_args: --scenario-name ${{ matrix.umd_version }}
+          molecule_working_dir: "${{ github.repository }}"
         env:
           ANSIBLE_FORCE_COLOR: "1"
