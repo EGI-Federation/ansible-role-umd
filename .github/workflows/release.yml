@@ -31,7 +31,6 @@ jobs:
         with:
           molecule_command: create
           molecule_args: --scenario-name umd4
-          molecule_working_dir: "${{ github.repository }}"
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
