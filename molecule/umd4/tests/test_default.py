@@ -1,14 +1,10 @@
-import os
-from distutils.version import LooseVersion  # , StrictVersion
+"""Role testing files using testinfra."""
 
-import testinfra.utils.ansible_runner
-
-testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
-    os.environ["MOLECULE_INVENTORY_FILE"]
-).get_hosts("all")
+from distutils.version import LooseVersion
 
 
 def test_hosts_file(host):
+    """Validate /etc/hosts file."""
     f = host.file("/etc/hosts")
 
     assert f.exists
