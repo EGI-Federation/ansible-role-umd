@@ -12,7 +12,7 @@
     baseurl: "http://{{ ca_server }}/sw/{{ ca_branch }}/cas/{{ ca_version }}/current/"
     enabled: "yes"
     gpgcheck: "yes"
-    gpgkey: http://repository.egi.eu/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3
+    gpgkey: "http://repository.egi.eu/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3"
   when: (ansible_os_family | lower) == 'redhat'
 
 - name: Ensure EGI Policy Core is present
@@ -31,4 +31,3 @@
     name: fetch-crl
     state: present
   when: crl_deploy
-# vim: set ft=yaml.ansible:

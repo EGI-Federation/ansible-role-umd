@@ -17,7 +17,8 @@
         name: "UMD-{{ release }}-candidate-base"
         description: "UMD-{{ release }} candidate - base"
         file: "UMD-{{ release }}-candidate"
-        baseurl: "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/base"
+        baseurl:
+          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/base"
         protect: true
         enabled: true
         priority: 1
@@ -27,7 +28,8 @@
         name: "UMD-{{ release }}-candidate-updates"
         description: "UMD-{{ release }} candidate - updates"
         file: "UMD-{{ release }}-candidate"
-        baseurl: "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/updates"
+        baseurl:
+          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/updates"
         protect: true
         enabled: true
         priority: 1
@@ -47,4 +49,3 @@
 - name: Enable UMD untested repository
   ansible.builtin.command: yum-config-manager --enable UMD-*-untested
   when: enable_untested_repo
-# vim: set ft=yaml.ansible:

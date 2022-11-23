@@ -30,4 +30,3 @@
 
 - name: Run baseline
   ansible.builtin.import_tasks: baseline.yml
-# vim: set ft=yaml.ansible:
