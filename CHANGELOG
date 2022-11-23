@@ -7,6 +7,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Drop all references to debian, refesh molecule, lint (#16) (Baptiste Grenier)
 - Drop all tasks relating to doing security updates (#16) (Baptiste Grenier)
 - Refresh ansible role (CA, repository, documentation) (#15) (Baptiste Grenier)
 
