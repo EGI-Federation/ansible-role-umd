@@ -18,7 +18,7 @@ on:
 jobs:
   publish:
     name: Build centOS 7 RPMs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     container: centos:7
     steps:
       - uses: actions/checkout@v3
@@ -38,6 +38,8 @@ jobs:
       # in which case 'username' and 'password' can be omitted.
       - name: Check available images
         run: |
+          podman images list --all
+          podman container list --all
           docker ps -a
           docker images -a
 
