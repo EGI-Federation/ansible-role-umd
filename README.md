@@ -104,9 +104,9 @@ $ pip install -r requirements.txt
 
 Run molecule
 
-````shell
+```shell
 # Lint
-$ ANSIBLE_FORCE_COLOR=1 molecule lint
+$ molecule lint
 ```
 
 ## Preparing a release
@@ -124,8 +124,6 @@ Apache 2.0
 
 ## Author Information
 
-Original author Pablo Orviz <orviz@ifca.unican.es>
+Original author [Pablo Orviz](https://github.com/orviz).
 
 For contributions see [AUTHORS.md](AUTHORS.md).
-````
-
