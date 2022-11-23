@@ -12,13 +12,15 @@
   when: (release is not defined) or (release_url[release] is not defined)
 
 - name: Include OS-specific tasks
-  ansible.builtin.include_tasks: "{{ ansible_os_family| lower }}.yml"
+  ansible.builtin.include_tasks: "{{ ansible_os_family | lower }}.yml"
 
+# XXX Document how this can be used
 - name: Download verification repository files
   ansible.builtin.get_url:
     url: "{{ item }}"
     dest: "{{ sources_dir }}"
-  with_items: "{{ verification_repofile|default([]) }}"
+    mode: "0644"
+  with_items: "{{ verification_repofile | default([]) }}"
   when: verification_repofile is defined
 
 - name: Set up IGTF repository
