@@ -11,19 +11,18 @@ lint: |
 platforms:
   - name: umd-centos7
     image: quay.io/centos/centos:7
+    pre_build_image: false
 provisioner:
   name: ansible
   config_options:
     defaults:
+      force_color: true
       callback_whitelist: yaml, stdout, profile_tasks
       stdout_callback: yaml
-      bin_ansible_callbacks: True
-      nocolor: False
-      force_color: True
-scenario:
-  name: default
+      bin_ansible_callbacks: true
 verifier:
   name: testinfra
   options:
-    n: 2
-    color: true
+    verbose: true
+    color: "yes"
+    capture: "no"
