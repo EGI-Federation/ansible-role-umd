@@ -3,21 +3,28 @@ dependency:
   name: galaxy
 driver:
   name: docker
+scenario:
+  name: umd4
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  ansible-lint --force-color
   flake8
 platforms:
   - name: umd-centos7
     image: quay.io/centos/centos:7
+    pre_build_image: false
 provisioner:
   name: ansible
-scenario:
-  name: umd4
+  config_options:
+    defaults:
+      force_color: true
+      callback_enabled: yaml, stdout, profile_tasks
+      stdout_callback: yaml
+      bin_ansible_callbacks: true
 verifier:
   name: testinfra
   options:
-    n: 2
-    nagios: true
-    color: true
+    verbose: true
+    color: "yes"
+    capture: "no"
