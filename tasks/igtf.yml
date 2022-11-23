@@ -5,27 +5,6 @@
     ca_server: repository.egi.eu
   when: ca_verification
 
-- name: Add apt key
-  ansible.builtin.apt_key:
-    url: "https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3"
-    state: present
-  when: ansible_distribution == 'Ubuntu'
-
-- name: Add IGTF repository for APT
-  ansible.builtin.apt_repository:
-    repo: deb http://{{ ca_server }}/sw/{{ ca_branch }}/cas/{{ ca_version }}/current egi-igtf core
-    state: present
-    filename: egi-igtf
-    update_cache: "yes"
-  when: ansible_distribution == 'Ubuntu'
-
-- name: Ensure yum.repos.d directory is present
-  ansible.builtin.file:
-    path: /etc/yum.repos.d
-    owner: root
-    state: directory
-    group: root
-
 - name: Add IGTF repository for YUM
   ansible.builtin.yum_repository:
     name: EGI-trustanchors

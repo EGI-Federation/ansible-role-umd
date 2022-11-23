@@ -1,7 +1,0 @@
----
-release_url:
-  3: http://repository.egi.eu/sw/production/umd/3/debian/dists/squeeze/main/binary-amd64/umd-release-3.0.0_all.deb
-sources_dir: /etc/apt/sources.list.d
-nick: squeeze
-baseline:
-  - ntpdate
