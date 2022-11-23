@@ -2,7 +2,7 @@
 # When a tag is created
 # - create a new release from the tag
 # - build and attach packages to the release
-name: Create packages and release
+name: Release a new version, publish artefacts
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
 # https://github.com/marketplace/actions/push-to-registry
 jobs:
   publish:
-    name: Build centOS 7 RPMs
+    name: Build UMD4 for CentOS 7
     runs-on: ubuntu-20.04
     container: centos:7
     steps:
@@ -57,3 +57,5 @@ jobs:
 
       - name: Print image url
         run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
+
+      ## Publish role to ansible galaxy
