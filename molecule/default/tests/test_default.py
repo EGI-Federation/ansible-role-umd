@@ -1,9 +1,10 @@
 """Role testing files using testinfra."""
 
-import pytest
 import re
 import urllib.request
 from xml.dom import minidom
+
+import pytest
 
 
 def test_hosts_file(host):
