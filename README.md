@@ -41,12 +41,11 @@ Brief description of the variables used in the role:
   'false')
 - `ca_verification: false`: Enables the IGTF repository for trusted CAs
   (defaults to `false`)
-- `ca_version: 1`: CA version (defaults to '1', only if
-  `ca_verification: true`)
+- `ca_version: 1`: CA version (defaults to '1', only if `ca_verification: true`)
 - `ca_branch: production`: CA branch (defaults to 'production', only if
   `ca_verification: true`)
-- `ca_verification: true`: CA servers (defaults to 'repository.egi.eu', only
-  if `ca_verification: true`)
+- `ca_verification: true`: CA servers (defaults to 'repository.egi.eu', only if
+  `ca_verification: true`)
   - _e.g.,_ `ca_server: repository.egi.eu`
 - `crl_deploy: false`: Installs 'fetch-crl' package if enabled (defaults to
   `false`)
@@ -89,7 +88,9 @@ are some examples of how to use this role.
 
 ## Running molecule locally
 
-Prepare a virtual env for testing.
+Prepare a virtual env for testing using
+[molecule](https://molecule.readthedocs.io), as documented in the
+[EGI Ansible style guide](https://docs.egi.eu/ansible-style-guide/).
 
 ```shell
 # Create a folder for virtual environments
@@ -107,6 +108,8 @@ Run molecule
 ```shell
 # Lint
 $ molecule lint
+# Run the complete test suite
+$ molecule test
 ```
 
 ## Preparing a release
