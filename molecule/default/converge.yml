@@ -1,6 +1,5 @@
 ---
 - name: Converge
   hosts: all
-  strategy: free
   roles:
     - { role: egi_federation.umd, release: 4, crl_deploy: true }
