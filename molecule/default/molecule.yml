@@ -15,12 +15,15 @@ provisioner:
   name: ansible
   config_options:
     defaults:
-      callback_whitelist: yaml, stdout,profile_tasks
+      callback_whitelist: yaml, stdout, profile_tasks
       stdout_callback: yaml
       bin_ansible_callbacks: True
+      nocolor: False
+      force_color: True
 scenario:
   name: default
 verifier:
   name: testinfra
   options:
     n: 2
+    color: true

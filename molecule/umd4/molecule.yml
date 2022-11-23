@@ -20,3 +20,4 @@ verifier:
   options:
     n: 2
     nagios: true
+    color: true
