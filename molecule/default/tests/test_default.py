@@ -1,15 +1,13 @@
-import os
+"""Role testing files using testinfra."""
+
+import pytest
 import re
 import urllib.request
 from xml.dom import minidom
 
-import pytest
-from testinfra.utils.ansible_runner import AnsibleRunner
-
-testinfra_hosts = AnsibleRunner(os.environ["MOLECULE_INVENTORY_FILE"]).get_hosts("all")
-
 
 def test_hosts_file(host):
+    """Validate /etc/hosts file."""
     f = host.file("/etc/hosts")
 
     assert f.exists
@@ -25,16 +23,16 @@ def test_umd_version(host):
 
 
 @pytest.mark.parametrize(
-    "repo_file,os_major_version",
+    "repo_file",
     [
-        ("EGI-trustanchors.repo", "7"),
-        ("epel.repo", "7"),
-        ("UMD-4-base.repo", "7"),
-        ("UMD-4-updates.repo", "7"),
+        ("EGI-trustanchors.repo"),
+        ("epel.repo"),
+        ("UMD-4-base.repo"),
+        ("UMD-4-updates.repo"),
     ],
 )
-# Test that repositories are properly configured
-def test_repositories_present(host, repo_file, os_major_version):
+# Test that repositories are present
+def test_repositories_present(host, repo_file):
     f = host.file("/etc/yum.repos.d/" + repo_file)
     assert f.exists
     assert f.uid == 0
