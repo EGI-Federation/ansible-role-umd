@@ -17,7 +17,7 @@ provisioner:
   config_options:
     defaults:
       force_color: true
-      callback_whitelist: yaml, stdout, profile_tasks
+      callback_enabled: yaml, stdout, profile_tasks
       stdout_callback: yaml
       bin_ansible_callbacks: true
 verifier:
