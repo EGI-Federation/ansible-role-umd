@@ -6,7 +6,7 @@ driver:
 lint: |
   set -e
   yamllint .
-  ansible-lint
+  ansible-lint --force-color
   flake8
 platforms:
   - name: umd-centos7
