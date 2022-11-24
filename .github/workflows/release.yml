@@ -19,7 +19,6 @@ jobs:
   publish:
     name: Build UMD4 for CentOS 7
     runs-on: ubuntu-20.04
-    container: centos:7
     steps:
       - uses: actions/checkout@v3
         with:
@@ -38,6 +37,7 @@ jobs:
       # in which case 'username' and 'password' can be omitted.
       - name: Check available images
         run: |
+          echo "$PATH"
           podman images list --all
           podman container list --all
           docker ps -a
