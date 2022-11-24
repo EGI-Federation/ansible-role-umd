@@ -19,6 +19,13 @@ jobs:
   publish:
     name: Build UMD4 for CentOS 7
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        umd_version:
+          - "umd4"
+        os:
+          - "centos7"
     steps:
       - uses: actions/checkout@v3
         with:
@@ -29,7 +36,7 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: create
-          molecule_args: --scenario-name umd4
+          molecule_args: --scenario-name ${{ matrix.umd_version }}
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
@@ -37,8 +44,8 @@ jobs:
       # in which case 'username' and 'password' can be omitted.
       - name: Check available images
         run: |
-          docker commit umd-centos7 quay.io/egi/umd4:centos7
+          docker commit umd-${{ matrix.os }} quay.io/egi/${{ matrix.umd_version }}:${{ matrix.os }}
           echo "${{ secrets.QUAY_REGISTRY_PASSWORD }}" | docker login -u="egi+egi_github" --password-stdin quay.io
-          docker push quay.io/egi/umd4:centos7
+          docker push quay.io/egi/${{ matrix.umd_version }}:${{ matrix.os }}
 
       ## Publish role to ansible galaxy
