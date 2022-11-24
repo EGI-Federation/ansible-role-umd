@@ -38,10 +38,10 @@ jobs:
       - name: Check available images
         run: |
           echo "$PATH"
-          podman images list --all
-          podman container list --all
           docker ps -a
-          docker images -a
+          docker commit umd-centos7 quay.io/egi/umd4:centos7
+          docker login -u="egi+egi_github" -p="${QUAY_REGISTRY_PASSWORD}" quay.io
+          docker push quay.io/egi/umd4:centos7
 
       # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
       # in which case 'username' and 'password' can be omitted.
