@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: umd
   namespace: egi_federation
-  author: "Pablo Orviz"
+  author: "EGI Federation"
   company: "EGI Federation"
   description: UMD distribution repository deployment
   license: Apache
