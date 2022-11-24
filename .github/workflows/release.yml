@@ -18,7 +18,7 @@ on:
 jobs:
   publish:
     name: Build UMD4 for CentOS 7
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -40,20 +40,5 @@ jobs:
           docker commit umd-centos7 quay.io/egi/umd4:centos7
           echo "${{ secrets.QUAY_REGISTRY_PASSWORD }}" | docker login -u="egi+egi_github" --password-stdin quay.io
           docker push quay.io/egi/umd4:centos7
-
-      # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
-      # in which case 'username' and 'password' can be omitted.
-      - name: Push To quay.io
-        id: push-to-quay
-        uses: redhat-actions/push-to-registry@v2
-        with:
-          image: umd4
-          tags: centos7
-          registry: quay.io/egi
-          username: egi+egi_github
-          password: ${{ secrets.QUAY_REGISTRY_PASSWORD }}
-
-      - name: Print image url
-        run: echo "Image pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
       ## Publish role to ansible galaxy
