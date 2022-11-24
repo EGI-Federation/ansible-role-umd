@@ -13,6 +13,8 @@ on:
 #   push:
 #     tags:
 #       - "v*"
+#     branches:
+#       - "main"
 
 # https://github.com/marketplace/actions/push-to-registry
 jobs:
@@ -40,12 +42,16 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
-      # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
-      # in which case 'username' and 'password' can be omitted.
-      - name: Check available images
+      # TODO look into pushing some description
+      # https://github.com/marketplace/actions/update-container-description-action
+      - name: Publish image to Quay
         run: |
           docker commit umd-${{ matrix.os }} quay.io/egi/${{ matrix.umd_version }}:${{ matrix.os }}
           echo "${{ secrets.QUAY_REGISTRY_PASSWORD }}" | docker login -u="egi+egi_github" --password-stdin quay.io
           docker push quay.io/egi/${{ matrix.umd_version }}:${{ matrix.os }}
 
-      ## Publish role to ansible galaxy
+      # Publish role to ansible galaxy
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.0
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
