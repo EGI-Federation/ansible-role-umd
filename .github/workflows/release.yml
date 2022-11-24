@@ -1,20 +1,15 @@
 ---
 # When a tag is created
-# - create a new release from the tag
-# - build and attach packages to the release
+# - build and publish container to quay
+# - publish role to ansible-galaxy
 name: Release a new version, publish artefacts
 
 on:
   push:
-  pull_request:
-
-# FIXME shoudl only run on tags
-# on:
-#   push:
-#     tags:
-#       - "v*"
-#     branches:
-#       - "main"
+    tags:
+      - "v*"
+    branches:
+      - "main"
 
 # https://github.com/marketplace/actions/push-to-registry
 jobs:
