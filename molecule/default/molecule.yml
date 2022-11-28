@@ -9,7 +9,7 @@ lint: |
   set -e
   yamllint .
   ansible-lint --force-color
-  flake8
+  flake8 --config .github/linters/.flake8
 platforms:
   - name: umd-centos7
     image: quay.io/centos/centos:7
