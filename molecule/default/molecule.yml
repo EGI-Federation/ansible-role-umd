@@ -20,7 +20,7 @@ provisioner:
     defaults:
       force_color: true
       callback_enabled: yaml, stdout, profile_tasks
-      stdout_callback: yaml
+      stdout_callback: community.general.yaml
       bin_ansible_callbacks: true
 verifier:
   name: testinfra
