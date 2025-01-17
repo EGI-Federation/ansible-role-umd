@@ -1,5 +1,5 @@
 ansible
-molecule[docker]
+molecule
 molecule-plugins[docker]
 docker
 pytest-xdist
