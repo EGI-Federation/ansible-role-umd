@@ -1,5 +1,6 @@
 ansible
 molecule[docker]
+molecule-plugins[docker]
 docker
 pytest-xdist
 ruamel.yaml
