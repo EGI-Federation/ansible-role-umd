@@ -1,0 +1,5 @@
+---
+release_url:
+  5: https://repository.egi.eu/sw/production/umd/5/al9/release/x86_64/umd-release-5.0.0-1.al9.alma.noarch.rpm
+sources_dir: /etc/yum.repos.d/
+nick: almalinux9
