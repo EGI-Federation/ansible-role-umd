@@ -2,7 +2,6 @@
 baseline_packages: []
 enable_candidate_repo: false
 enable_testing_repo: false
-enable_untested_repo: false
 ca_version: 1
 ca_branch: production
 ca_server: repository.egi.eu

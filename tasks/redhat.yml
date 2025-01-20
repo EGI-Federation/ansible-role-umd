@@ -49,13 +49,9 @@
   ansible.builtin.package:
     name: yum-utils
     state: present
-  when: enable_testing_repo or enable_untested_repo
+  when: enable_testing_repo
 
 # these tasks are not idempotent - they should be replaced with some "replace" tasks, in a block
 - name: Enable UMD testing repository
   ansible.builtin.command: yum-config-manager --enable UMD-*-testing
   when: enable_testing_repo
-
-- name: Enable UMD untested repository
-  ansible.builtin.command: yum-config-manager --enable UMD-*-untested
-  when: enable_untested_repo

@@ -37,8 +37,6 @@ Brief description of the variables used in the role:
 - `enable_testing_repo: false`: Enables the testing repository (defaults to
   'false')
   - _e.g.,_ `enable_testing_repo: false`
-- `enable_untested_repo: false`: Enables the untested repository (defaults to
-  'false')
 - `ca_verification: false`: Enables the IGTF repository for trusted CAs
   (defaults to `false`)
 - `ca_version: 1`: CA version (defaults to '1', only if `ca_verification: true`)
