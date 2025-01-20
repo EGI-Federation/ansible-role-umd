@@ -6,3 +6,4 @@ pytest
 pytest-xdist
 pytest-testinfra
 ruamel.yaml
+setuptools
