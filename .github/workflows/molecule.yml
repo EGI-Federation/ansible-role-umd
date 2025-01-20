@@ -22,6 +22,7 @@ jobs:
       - name: "Install python dependencies"
         run: |
           pip install -r requirements.txt
+          sudo apt install -y pytest
         working-directory: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
