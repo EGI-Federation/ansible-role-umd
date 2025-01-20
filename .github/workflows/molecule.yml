@@ -19,10 +19,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
+      # XXX: See https://github.com/gofrolist/molecule-action/issues/245
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
       - name: "Install python dependencies"
         run: |
           pip install -r requirements.txt
-          sudo apt install -y pytest
         working-directory: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
@@ -33,3 +37,4 @@ jobs:
           molecule_working_dir: "${{ github.repository }}"
         env:
           ANSIBLE_FORCE_COLOR: "1"
+          PY_COLORS: "1"
