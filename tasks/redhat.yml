@@ -26,8 +26,8 @@
         description: "UMD-{{ release }} candidate - base"
         file: "UMD-{{ release }}-candidate"
         baseurl:
-          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{
-          nick }}/x86_64/base"
+          "https://repository.egi.eu/sw/production/umd/candidate/{{ release
+          }}/{{ nick }}/x86_64/base"
         protect: true
         enabled: true
         priority: 1
@@ -38,8 +38,8 @@
         description: "UMD-{{ release }} candidate - updates"
         file: "UMD-{{ release }}-candidate"
         baseurl:
-          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{
-          nick }}/x86_64/updates"
+          "https://repository.egi.eu/sw/production/umd/candidate/{{ release
+          }}/{{ nick }}/x86_64/updates"
         protect: true
         enabled: true
         priority: 1
