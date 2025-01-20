@@ -4,6 +4,14 @@
     name: epel-release
     state: present
 
+- name: "Import UMD GPG keys"
+  ansible.builtin.rpm_key:
+    state: "present"
+    key: "{{ item }}"
+  loop:
+    - "https://repository.egi.eu/sw/production/umd/UMD-5-RPM-PGP-KEY"
+    - "https://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY"
+
 - name: Ensure release package is present (RedHat)
   ansible.builtin.package:
     name: "{{ release_url[release] }}"
@@ -18,7 +26,8 @@
         description: "UMD-{{ release }} candidate - base"
         file: "UMD-{{ release }}-candidate"
         baseurl:
-          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/base"
+          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{
+          nick }}/x86_64/base"
         protect: true
         enabled: true
         priority: 1
@@ -29,7 +38,8 @@
         description: "UMD-{{ release }} candidate - updates"
         file: "UMD-{{ release }}-candidate"
         baseurl:
-          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{ nick }}/x86_64/updates"
+          "http://repository.egi.eu/sw/production/umd/candidate/{{ release }}/{{
+          nick }}/x86_64/updates"
         protect: true
         enabled: true
         priority: 1
