@@ -2,6 +2,7 @@ ansible
 molecule
 molecule-plugins[docker]
 docker
+pytest
 pytest-xdist
 ruamel.yaml
 pytest-testinfra
