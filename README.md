@@ -30,7 +30,7 @@ in the metadata file.
 Brief description of the variables used in the role:
 
 - `release` (int) UMD release version (no default)
-  - _e.g.,_ `release: 4`
+  - _e.g.,_ `release: 5`
 - `enable_candidate_repo: false`: Enable the candidate repository, commonly used
   in the release candidate (defaults to `false`)
   - _e.g.,_ `enable_candidate_repo: false`
@@ -67,7 +67,7 @@ are some examples of how to use this role.
 ```yaml
 - hosts: all
   roles:
-    - { role: ansible-umd, release: 4 }
+    - { role: ansible-umd, release: 5 }
 ```
 
 ### Install UMD repository files together with the trusted CAs and fetch-crl
@@ -75,7 +75,7 @@ are some examples of how to use this role.
 ```yaml
 - hosts: all
   roles:
-    - { role: ansible-umd, release: 4, ca_verification: true, crl_deploy: true }
+    - { role: ansible-umd, release: 5, ca_verification: true, crl_deploy: true }
 ```
 
 ### Install UMD repository files, enabling the candidate repository
@@ -83,7 +83,7 @@ are some examples of how to use this role.
 ```yaml
 - hosts: all
   roles:
-    - { role: ansible-umd, release: 4, enable_candidate_repo: true }
+    - { role: ansible-umd, release: 5, enable_candidate_repo: true }
 ```
 
 ## Running molecule locally
