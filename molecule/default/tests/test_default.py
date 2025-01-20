@@ -52,8 +52,8 @@ def test_repositories_enabled(host, repo_file):
 @pytest.mark.parametrize(
     "systemd_file",
     [
-        ("fectch-crl.service"),
-        ("fectch-crl.timer"),
+        ("fetch-crl.service"),
+        ("fetch-crl.timer"),
     ],
 )
 def test_crl_renwal_task(host, systemd_file):
