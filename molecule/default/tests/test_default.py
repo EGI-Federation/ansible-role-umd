@@ -49,10 +49,17 @@ def test_repositories_enabled(host, repo_file):
     assert enabled_regex.search(content) is not None
 
 
-def test_crl_files(host):
-    cron = host.file("/etc/cron.d/fetch-crl")
-    assert cron.exists
-    assert cron.is_file
+@pytest.mark.parametrize(
+    "systemd_file",
+    [
+        ("fectch-crl.service"),
+        ("fectch-crl.timer"),
+    ],
+)
+def test_crl_renwal_task(host, systemd_file):
+    crl_renewal = host.file("/usr/lib/systemd/system/" + systemd_file)
+    assert crl_renewal.exists
+    assert crl_renewal.is_file
 
 
 # def test_crl_freshness(host):
