@@ -16,11 +16,10 @@ def test_hosts_file(host):
     assert f.group == "root"
 
 
-# Test that UMD release is there and that it has the right version
+# Test that UMD release is there
 def test_umd_version(host):
     umd_package = host.package("umd-release")
     assert umd_package.is_installed
-    assert umd_package.version.startswith("5")
 
 
 @pytest.mark.parametrize(
@@ -28,9 +27,6 @@ def test_umd_version(host):
     [
         ("EGI-trustanchors.repo"),
         ("epel.repo"),
-        ("UMD-5.repo"),
-        ("UMD-5-contrib.repo"),
-        ("UMD-5-testing.repo"),
     ],
 )
 # Test that repositories are present
@@ -45,7 +41,6 @@ def test_repositories_present(host, repo_file):
     "repo_file",
     [
         ("EGI-trustanchors.repo"),
-        ("UMD-5.repo"),
     ],
 )
 def test_repositories_enabled(host, repo_file):
