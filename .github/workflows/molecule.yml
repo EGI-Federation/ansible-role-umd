@@ -28,13 +28,20 @@ jobs:
         run: |
           pip install -r requirements.txt
         working-directory: "${{ github.repository }}"
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_options: --debug
-          molecule_command: test
-          molecule_args: --scenario-name ${{ matrix.umd_version }}
-          molecule_working_dir: "${{ github.repository }}"
+      - name: "Run molecule manually"
+        run: |
+          molecule --debug test --scenario-name ${{ matrix.umd_version }}
+        working-directory: "${{ github.repository }}"
         env:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"
+      # - name: Molecule
+      #   uses: gofrolist/molecule-action@v2
+      #   with:
+      #     molecule_options: --debug
+      #     molecule_command: test
+      #     molecule_args: --scenario-name ${{ matrix.umd_version }}
+      #     molecule_working_dir: "${{ github.repository }}"
+      #   env:
+      #     ANSIBLE_FORCE_COLOR: "1"
+      #     PY_COLORS: "1"
