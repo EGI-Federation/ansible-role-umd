@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+scenario:
+  name: umd5
+lint: |
+  set -e
+  yamllint .
+  ansible-lint --force-color
+  flake8 --config .github/linters/.flake8
+platforms:
+  - name: umd-almalinux9
+    image: almalinux:9
+    pre_build_image: false
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      force_color: true
+      callback_enabled: yaml, stdout, profile_tasks
+      stdout_callback: community.general.yaml
+      bin_ansible_callbacks: true
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+    color: "yes"
+    capture: "no"
