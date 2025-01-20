@@ -11,8 +11,8 @@ lint: |
   ansible-lint --force-color
   flake8 --config .github/linters/.flake8
 platforms:
-  - name: umd-centos7
-    image: quay.io/centos/centos:7
+  - name: umd-almalinux9
+    image: almalinux:9
     pre_build_image: false
 provisioner:
   name: ansible

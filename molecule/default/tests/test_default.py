@@ -20,7 +20,7 @@ def test_hosts_file(host):
 def test_umd_version(host):
     umd_package = host.package("umd-release")
     assert umd_package.is_installed
-    assert umd_package.version.startswith("4")
+    assert umd_package.version.startswith("5")
 
 
 @pytest.mark.parametrize(
@@ -28,8 +28,9 @@ def test_umd_version(host):
     [
         ("EGI-trustanchors.repo"),
         ("epel.repo"),
-        ("UMD-4-base.repo"),
-        ("UMD-4-updates.repo"),
+        ("UMD-5.repo"),
+        ("UMD-5-contrib.repo"),
+        ("UMD-5-testing.repo"),
     ],
 )
 # Test that repositories are present
@@ -44,11 +45,7 @@ def test_repositories_present(host, repo_file):
     "repo_file",
     [
         ("EGI-trustanchors.repo"),
-        ("EGI-trustanchors.repo"),
-        ("UMD-4-base.repo"),
-        ("UMD-4-base.repo"),
-        ("UMD-4-updates.repo"),
-        ("UMD-4-updates.repo"),
+        ("UMD-5.repo"),
     ],
 )
 def test_repositories_enabled(host, repo_file):
@@ -69,7 +66,7 @@ def test_crl_files(host):
 def test_egi_policy(host):
     ca_package_name = "ca-policy-egi-core"
     ca_package_version_url = (
-        "http://repository.egi.eu/sw/production" "/cas/1/current/release.xml"
+        "https://repository.egi.eu/sw/production/cas/1/current/release.xml"
     )
     _doc = minidom.parse(urllib.request.urlopen(ca_package_version_url))
     _version = _doc.getElementsByTagName("Version")[0].firstChild.data
