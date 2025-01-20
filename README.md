@@ -1,11 +1,11 @@
 # Unified Middleware Distribution (UMD)
 
-[![Docker Repository on Quay](https://quay.io/repository/egi/umd4/status "Docker Repository on Quay")](https://quay.io/repository/egi/umd4)
+[![Docker Repository on Quay](https://quay.io/repository/egi/umd5/status "Docker Repository on Quay")](https://quay.io/repository/egi/umd5)
 
 The role deploys the repository files needed to access the products distributed
-by [UMD](https://go.egi.eu/umd), currently supported for Scientific Linux 6 and
-CentOS7. This role optionally deploys the Interoperable Global Trust Federation
-(IGTF) repository file.
+by [UMD](https://go.egi.eu/umd), currently supported for AlmaLinux 9 (and
+compatible). This role optionally deploys the Interoperable Global Trust
+Federation (IGTF) repository file.
 
 Information on available UMD release is available on the
 [EGI repository](https://repository.egi.eu/).
