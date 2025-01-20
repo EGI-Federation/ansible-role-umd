@@ -21,10 +21,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: "Install python dependencies"
-        run: |
-          pwd
-          ls -la
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
         working-directory: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
