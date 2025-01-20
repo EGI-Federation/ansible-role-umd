@@ -21,7 +21,9 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: "Install python dependencies"
-        run: pip install -r requirements.txt
+        run: |
+          dnf install -y pytest
+          pip install -r requirements.txt
         working-directory: "${{ github.repository }}"
       - name: Molecule
         uses: gofrolist/molecule-action@v2
