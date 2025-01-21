@@ -7,6 +7,7 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Add support for AlmanLinux 9 and UMD 5, drop end of life operating systems ($#19) (Baptiste Grenier)
 - Add community files, GitHub Actions, drop debian, fix molecule, role name, lint (#16) (Baptiste Grenier)
 - Drop all tasks relating to doing security updates (#16) (Baptiste Grenier)
 - Refresh ansible role (CA, repository, documentation) (#15) (Baptiste Grenier)
