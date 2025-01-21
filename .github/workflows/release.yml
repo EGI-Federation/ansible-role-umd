@@ -14,28 +14,33 @@ on:
 # https://github.com/marketplace/actions/push-to-registry
 jobs:
   publish:
-    name: Build UMD4 for CentOS 7
+    name: Build UMD 5 for AlmaLinux 9
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         umd_version:
-          - "umd4"
+          - "umd5"
         os:
-          - "centos7"
+          - "almalinux9"
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Build umd4-centos7 image with molecule
-        id: build-image
-        uses: gofrolist/molecule-action@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          molecule_command: create
-          molecule_args: --scenario-name ${{ matrix.umd_version }}
+          python-version: "3.x"
+      - name: Install python dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Build umd5-almalinux9 image with molecule
+        run: |
+          molecule create --scenario-name ${{ matrix.umd_version }}
         env:
           ANSIBLE_FORCE_COLOR: "1"
+          PY_COLORS: "1"
 
       # TODO look into pushing some description
       # https://github.com/marketplace/actions/update-container-description-action
