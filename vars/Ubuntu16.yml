@@ -1,5 +1,0 @@
----
-release_url:
-  3: https://repository.egi.eu/sw/production/umd/3/
-sources_dir: /etc/apt/sources.list.d
-nick: xenial
