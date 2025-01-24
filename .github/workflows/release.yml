@@ -37,7 +37,7 @@ jobs:
           pip install -r requirements.txt
       - name: Build umd5-almalinux9 image with molecule
         run: |
-          molecule create --scenario-name ${{ matrix.umd_version }}
+          molecule --debug create --scenario-name ${{ matrix.umd_version }}
         env:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"
