@@ -53,7 +53,7 @@ jobs:
           docker push quay.io/egi/${{ matrix.umd_version }}:${{ matrix.os }}
 
       # Publish role to ansible galaxy
-      - name: galaxy
+      - name: Publish role to Ansible Galaxy
         uses: robertdebock/galaxy-action@1.2.1
         with:
           galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
