@@ -42,7 +42,9 @@ jobs:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"
 
-      # TODO look into pushing some description
+      # Access is managed at https://quay.io/repository/egi/umd5?tab=settings
+      # Credentials for the robot account can be retrieved there
+      # TODO: look into pushing some description
       # https://github.com/marketplace/actions/update-container-description-action
       - name: Publish image to Quay
         run: |
