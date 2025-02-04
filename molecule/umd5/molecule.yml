@@ -7,11 +7,12 @@ driver:
   name: docker
 scenario:
   name: umd5
-lint: |
-  set -e
-  yamllint .
-  ansible-lint --force-color
-  flake8 --config .github/linters/.flake8
+# Not needed since we have this in the pre-commit hooks
+# lint: |
+#   set -e
+#   yamllint .
+#   ansible-lint --force-color
+#   flake8 --config .github/linters/.flake8
 platforms:
   - name: umd-almalinux9
     image: almalinux:9
@@ -24,9 +25,8 @@ provisioner:
       callback_enabled: yaml, stdout, profile_tasks
       stdout_callback: community.general.yaml
       bin_ansible_callbacks: true
+      roles_path: "${PWD}/../"
 verifier:
   name: testinfra
   options:
-    verbose: true
-    color: "yes"
-    capture: "no"
+    p: "no:pytest-ansible"

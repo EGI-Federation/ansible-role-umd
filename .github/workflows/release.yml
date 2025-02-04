@@ -20,24 +20,23 @@ jobs:
       fail-fast: false
       matrix:
         umd_version:
-          - "umd5"
+          - umd5
+          - default
         os:
-          - "almalinux9"
+          - almalinux9
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: "3.x"
       - name: Install python dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: Build umd5-almalinux9 image with molecule
-        run: |
-          molecule --debug create --scenario-name ${{ matrix.umd_version }}
+        run: molecule --debug converge --scenario-name ${{ matrix.umd_version }}
         env:
           ANSIBLE_FORCE_COLOR: "1"
           PY_COLORS: "1"

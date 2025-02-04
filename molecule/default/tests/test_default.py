@@ -56,7 +56,7 @@ def test_repositories_enabled(host, repo_file):
         ("fetch-crl.timer"),
     ],
 )
-def test_crl_renwal_task(host, systemd_file):
+def test_crl_renewal_task(host, systemd_file):
     crl_renewal = host.file("/usr/lib/systemd/system/" + systemd_file)
     assert crl_renewal.exists
     assert crl_renewal.is_file

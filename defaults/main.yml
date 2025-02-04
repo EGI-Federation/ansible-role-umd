@@ -1,9 +1,22 @@
 ---
-baseline_packages: []
-enable_candidate_repo: false
-enable_testing_repo: false
+# Packages which we need to be present on the image
+baseline_packages:
+  - umd-release
+
+# Repository and distribution variables
+
+## The base url of the
+repo_url: https://repository.egi.eu
+
+# Toggle the repo for the candidate packages (bool)
+enable_candidate_repo: False
+
+# Toggle the repo for the testing packages (bool)
+enable_testing_repo: False
+
+# Certificate Authority public certificates variable section
+## Which version of the CA Certificates package should we add?
 ca_version: 1
 ca_branch: production
-ca_server: repository.egi.eu
 ca_verification: false
 crl_deploy: false

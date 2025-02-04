@@ -1,0 +1,4 @@
+---
+# .ansible-lint.yml
+profile: production
+sarif_file: ansible-lint-result.sarif

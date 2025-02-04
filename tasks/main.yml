@@ -1,4 +1,5 @@
 ---
+# ansible-role-umd/tasks/main.yml
 - name: OS specific variables
   ansible.builtin.include_vars:
     "{{ ansible_distribution | lower }}{{ ansible_distribution_major_version
@@ -11,10 +12,10 @@
       supported OS"
   when: (release is not defined) or (release_url[release] is not defined)
 
-- name: Include OS-specific tasks
-  ansible.builtin.include_tasks: "{{ ansible_os_family | lower }}.yml"
+- name: Configure Repository
+  ansible.builtin.include_tasks: "{{ ansible_os_family | lower}}.yml"
+  # when: (ansible_distribution == "RedHat") or (ansible_distribution == "CentOS") or (ansible_distribution == "Scientific") or (ansible_distribution == "AlmaLinux")
 
-# XXX Document how this can be used
 - name: Download verification repository files
   ansible.builtin.get_url:
     url: "{{ item }}"

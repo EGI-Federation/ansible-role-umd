@@ -1,19 +1,20 @@
 ---
+# I suspect we do not need this task
 - name: Set necessary facts
   ansible.builtin.set_fact:
-    ca_branch: "production"
+    ca_branch: production
     ca_server: repository.egi.eu
   when: ca_verification
 
+# This should be separated into an OS-specific include
 - name: Add IGTF repository for YUM
   ansible.builtin.yum_repository:
     name: EGI-trustanchors
     description: EGI-trustanchors repo
-    baseurl:
-      "https://{{ ca_server }}/sw/{{ ca_branch }}/cas/{{ ca_version }}/current/"
-    enabled: "yes"
-    gpgcheck: "yes"
-    gpgkey: "https://repository.egi.eu/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3"
+    baseurl: "{{ repo_url }}/sw/{{ ca_branch }}/cas/{{ ca_version }}/current/"
+    enabled: True
+    gpgcheck: True
+    gpgkey: "{{ repo_url }}/sw/production/cas/1/GPG-KEY-EUGridPMA-RPM-3"
   when: (ansible_os_family | lower) == 'redhat'
 
 - name: Ensure EGI Policy Core is present

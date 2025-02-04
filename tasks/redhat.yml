@@ -4,46 +4,43 @@
     name: epel-release
     state: present
 
-- name: "Import UMD GPG keys"
+- name: Import UMD GPG keys
   ansible.builtin.rpm_key:
-    state: "present"
+    state: present
     key: "{{ item }}"
   loop:
-    - "https://repository.egi.eu/sw/production/umd/UMD-5-RPM-PGP-KEY"
-    - "https://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY"
+    - "{{ repo_url }}/sw/production/umd/UMD-{{ release }}-RPM-PGP-KEY"
+    - "{{ repo_url }}/sw/production/umd/UMD-RPM-PGP-KEY"
 
 - name: Ensure release package is present (RedHat)
   ansible.builtin.package:
     name: "{{ release_url[release] }}"
     state: present
 
-- name: Ensure UMD candidate repositories are enabled
+- name: Add UMD base candidate repository
+  yum_repository:
+    name: "UMD-{{ release }}-candidate-base"
+    description: "UMD-{{ release }} candidate - base"
+    file: "UMD-{{ release }}-candidate"
+    baseurl: "{{ repo_url }}/software/umd/{{ release }}/{{ nick }}/x86_64/base"
+    protect: True
+    enabled: True
+    priority: 1
+    gpgcheck: False
   when: enable_candidate_repo
-  block:
-    - name: Enable UMD candidate base
-      ansible.builtin.yum_repository:
-        name: "UMD-{{ release }}-candidate-base"
-        description: "UMD-{{ release }} candidate - base"
-        file: "UMD-{{ release }}-candidate"
-        baseurl:
-          "https://repository.egi.eu/sw/production/umd/candidate/{{ release
-          }}/{{ nick }}/x86_64/base"
-        protect: true
-        enabled: true
-        priority: 1
-        gpgcheck: false
-    - name: Enable UMD candidate updates
-      ansible.builtin.yum_repository:
-        name: "UMD-{{ release }}-candidate-updates"
-        description: "UMD-{{ release }} candidate - updates"
-        file: "UMD-{{ release }}-candidate"
-        baseurl:
-          "https://repository.egi.eu/sw/production/umd/candidate/{{ release
-          }}/{{ nick }}/x86_64/updates"
-        protect: true
-        enabled: true
-        priority: 1
-        gpgcheck: false
+
+- name: Add UMD updates candidate repository
+  yum_repository:
+    name: "UMD-{{ release }}-candidate-updates"
+    description: "UMD-{{ release }} candidate - updates"
+    file: "UMD-{{ release }}-candidate"
+    baseurl:
+      "{{ repo_url }}/software/umd/{{ release }}/{{ nick }}/x86_64/updates"
+    protect: True
+    enabled: True
+    priority: 1
+    gpgcheck: False
+  when: enable_candidate_repo
 
 - name: Ensure yum-utils is present
   ansible.builtin.package:

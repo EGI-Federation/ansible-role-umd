@@ -10,3 +10,6 @@ __pycache__
 .venv
 .python-version
 .envrc
+
+# Ignore megalinter cache
+megalinter-reports
